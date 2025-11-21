@@ -51,6 +51,28 @@ export const getMovieDetails = async (movieId) => {
   }
 };
 
+export const getGenres = async () => {
+  try {
+    const response = await tmdbApi.get('/genre/movie/list');
+    return response.data.genres;
+  } catch (error) {
+    console.error('Error fetching genres:', error);
+    throw error;
+  }
+};
+
+export const getMoviesByGenre = async (genreId) => {
+  try {
+    const response = await tmdbApi.get('/discover/movie', {
+      params: { with_genres: genreId },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching movies by genre:', error);
+    throw error;
+  }
+};
+
 export const getImageUrl = (path) => {
   return path ? `${IMAGE_BASE_URL}${path}` : 'https://via.placeholder.com/500x750?text=No+Image';
 };

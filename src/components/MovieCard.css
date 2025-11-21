@@ -1,15 +1,17 @@
 .movie-card {
-  background: white;
+  background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  border: 1px solid #d4af37;
 }
 
 .movie-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 12px rgba(212, 175, 55, 0.3);
+  border-color: #d4af37;
 }
 
 .movie-poster {
@@ -26,7 +28,7 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: #d4af37;
 }
 
 .movie-details {
@@ -42,13 +44,18 @@
 }
 
 .movie-year {
-  color: #666;
+  color: #ccc;
   font-size: 0.9rem;
 }
 
 .movie-overview {
-  color: #666;
+  color: #ccc;
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
+}
+
+.movie-release-date {
+  color: #ccc;
+  font-size: 0.9rem;
 }
