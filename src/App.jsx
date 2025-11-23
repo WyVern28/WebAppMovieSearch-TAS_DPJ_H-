@@ -14,17 +14,14 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState('');
   const [sortBy, setSortBy] = useState('popularity');
 
-  // Load genres and popular movies on initial render
   useEffect(() => {
     loadGenres();
     loadPopularMovies();
   }, []);
 
-  // Apply sorting and filtering when movies or sortBy changes
   useEffect(() => {
     let sorted = [...movies];
 
-    // Sort movies
     switch (sortBy) {
       case 'release_date_desc':
         sorted.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
@@ -44,7 +41,7 @@ function App() {
       case 'title_desc':
         sorted.sort((a, b) => b.title.localeCompare(a.title));
         break;
-      default: // popularity - keep original order
+      default:
         break;
     }
 
@@ -76,7 +73,7 @@ function App() {
   const handleSearch = async (query) => {
     setLoading(true);
     setSearchTerm(query);
-    setSelectedGenre(''); // Reset genre filter when searching
+    setSelectedGenre('');
     try {
       const data = await searchMovies(query);
       setMovies(data.results || []);
@@ -90,7 +87,7 @@ function App() {
 
   const handleGenreChange = async (genreId) => {
     setSelectedGenre(genreId);
-    setSearchTerm(''); // Reset search when selecting genre
+    setSearchTerm('');
 
     if (genreId === '') {
       loadPopularMovies();
